@@ -1,3 +1,5 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", function () {
   const taskListContainer = document.querySelector("#task-list ul");
   const addTaskForm = document.forms["add-task"];
@@ -7,7 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
   addTaskForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const inputText = addTaskForm.querySelector('input[type="text"]').value;
+    const inputBox = addTaskForm.querySelector('input[type="text"]');
+
+    const inputText = inputBox.value;
 
     const taskWrapper = document.createElement("li");
     const taskName = document.createElement("span");
@@ -23,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
     taskWrapper.appendChild(deleteButton);
 
     taskListContainer.appendChild(taskWrapper);
+
+    inputBox.value = "";
   });
 
   //delete task
